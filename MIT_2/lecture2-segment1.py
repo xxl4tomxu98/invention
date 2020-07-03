@@ -57,7 +57,8 @@ def testGreedys(foods, maxUnits):
 def maxVal(toConsider, avail):
     """Assumes toConsider a list of items, avail a weight
        Returns a tuple of the total value of a solution to the
-         0/1 knapsack problem and the items of that solution"""
+         0/1 knapsack problem and the items of that solution
+         This is a case of the Brute Force Algorithm"""
     if toConsider == [] or avail == 0:
         result = (0, ())
     elif toConsider[0].getCost() > avail:
@@ -100,8 +101,8 @@ values = [89,90,95,100,90,79,50,10]
 calories = [123,154,258,354,365,150,95,195]
 foods = buildMenu(names, values, calories)
 
-testGreedys(foods, 750)
-print('')
+#testGreedys(foods, 750)
+#print('')
 testMaxVal(foods, 750)
 
 

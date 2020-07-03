@@ -141,7 +141,7 @@ plot_prediction_grid(xx, yy, prediction_grid, filename)
 
 from sklearn import datasets
 iris = datasets.load_iris()
-
+iris[:5,:]
 predictors = iris.data[:, 0:2]
 outcomes = iris.target
 
