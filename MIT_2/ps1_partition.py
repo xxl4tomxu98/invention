@@ -21,5 +21,21 @@ def get_partitions(set_):
 ### Uncomment the following code  and run this file
 ### to see what get_partitions does if you want to visualize it:
 
-#for item in (get_partitions(['a','b','c','d'])):
+# for item in (get_partitions(['a','b','c','d'])):
 #     print(item)
+        
+def brute_force_cow_transport(cows, max_weights):  
+    candidates = []     
+    for trips in (get_partitions(cows.keys())):
+        for trip in trips:
+            if sum([cows[cow] for cow in trip]) > max_weights:
+                trips = None
+        if trips != None:
+            candidates.append(trips)
+    min_trip_num = min(len(i) for i in candidates)
+    for i in candidates:
+        if len(i) == min_trip_num:
+            print(i)
+cows = {"Jesse": 6, "Maybel": 3, "Callie": 2, "Maggie": 5} 
+brute_force_cow_transport(cows, 10)
+
