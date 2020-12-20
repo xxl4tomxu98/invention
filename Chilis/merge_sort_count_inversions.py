@@ -15,10 +15,9 @@ Input Format
 
 The first line contains an integer, , the number of datasets.
 
-Each of the next  pairs of lines is as follows:
+Each of the next pairs of lines is as follows:
 
-The first line contains an integer, , the number of elements in .
-The second line contains  space-separated integers, ."""
+"""
 
 
 def merge(arr, left_half, right_half):

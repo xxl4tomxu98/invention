@@ -1,0 +1,3 @@
+'''Given two sorted arrays, find the median element amongst the two arrays. That is, if both arrays were combined, find the median element from the combined array. Assume that there is not enough memory to actually combine both arrays. There exists an O(log n + log m) solution.
+Solution
+Since they are sorted, you can find the middle element of each to find the medians of each list. The actual median is now somewhere in between these two numbers. You can then discard the non-relevant portions of each list. Repeat the process. When the middle elements from both lists converge, you have now found the median element.'''
