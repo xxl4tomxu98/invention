@@ -25,7 +25,8 @@ def maxEvents(arrival, duration):
     for i in range(len(arrival)-1):
         if arr_sorted[events[-1]]+dur_sorted[events[-1]] <= arr_sorted[i+1]:
             events.append(i+1)
-        elif arr_sorted[events[-1]]+dur_sorted[events[-1]] >= arr_sorted[i+1]+dur_sorted[i+1]:
+        elif arr_sorted[events[-1]]+dur_sorted[events[-1]]
+              >= arr_sorted[i+1]+dur_sorted[i+1]:
             events.pop()
             events.append(i+1)
     return len(events)

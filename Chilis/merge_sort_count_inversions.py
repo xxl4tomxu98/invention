@@ -1,12 +1,18 @@
-"""In an array, , the elements at indices  and  (where ) form an inversion if . In other words, inverted elements  and  are considered to be "out of order". To correct an inversion, we can swap adjacent elements.
+"""In an array, , the elements at indices  and  (where ) form an inversion if.
+In other words, inverted elements  and  are considered to be "out of order".
+To correct an inversion, we can swap adjacent elements.
 
-For example, consider the dataset . It has two inversions:  and . To sort the array, we must perform the following two swaps to correct the inversions:
+For example, consider the dataset . It has two inversions:  and .
+To sort the array, we must perform the following two swaps to correct the
+inversions:
 
-Given  datasets, print the number of inversions that must be swapped to sort each dataset on a new line.
+Given  datasets, print the number of inversions that must be swapped to
+sort each dataset on a new line.
 
 Function Description
 
-Complete the function countInversions in the editor below. It must return an integer representing the number of inversions required to sort the array.
+Complete the function countInversions in the editor below. It must return an
+integer representing the number of inversions required to sort the array.
 
 countInversions has the following parameter(s):
 
@@ -50,7 +56,8 @@ def merge_sort(arr):
         mid = len(arr)//2
         left_half, right_half = arr[:mid], arr[mid:]
         inversions = merge_sort(
-            left_half) + merge_sort(right_half) + merge(arr, left_half, right_half)
+            left_half) + merge_sort(right_half) \
+            + merge(arr, left_half, right_half)
         return inversions
     return 0
 

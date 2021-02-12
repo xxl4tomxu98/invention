@@ -1,6 +1,4 @@
 import pickle
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
 import pandas as pd
 import flask
@@ -11,15 +9,12 @@ app = flask.Flask(__name__)
 with open('../titanic_rfc.pkl', 'rb') as picklefile:
     PREDICTOR = pickle.load(picklefile)
 
-df = pd.read_csv('../data/SMSSpamCollection.txt', sep='\t', header=None)
-df.columns = ['target', 'msg']
-y = df['target']
-X = df['msg']
-# Tfidf, filter stop words, 300 features
-cvec = TfidfVectorizer(stop_words='english', max_features=300)
-X = cvec.fit_transform(X)
-clf = MultinomialNB()
-clf.fit(X, y)
+with open('../tfid_vector_transform.pkl', 'rb') as picklefile:
+    cvec = pickle.load(picklefile)
+    
+with open('../smsspam_nb.pkl', 'rb') as picklefile:
+    smspredictor = pickle.load(picklefile)
+    
 #-------- ROUTES GO HERE -----------#
 @app.route('/predict', methods=["GET"])
 def predict():
@@ -34,12 +29,20 @@ def predict():
     results = {'survival chances': score[0, 1], 'death chances': score[0, 0]}
     return flask.jsonify(results)
 
+@app.route('/is_spam', methods=["GET"])
+def is_spam():
+     msg = pd.Series(flask.request.args['msg'])
+     X_new = cvec.transform(msg)
+     score = smspredictor.predict(X_new)
+     results = {'prediction': score[0]}
+     return flask.jsonify(results)
+ 
 #---------- CREATING AN API, METHOD 2 ----------------#
 
 # This method takes input via an HTML page
 @app.route('/page')
 def page():
-    with open("page.html", 'r') as viz_file:
+    with open("page1.html", 'r') as viz_file:
         return viz_file.read()
 
 
@@ -49,7 +52,7 @@ def result():
     if flask.request.method == 'POST':
 
         inputs = flask.request.form
-
+        msg = inputs['msg']
         pclass = inputs['pclass'][0]
         sex = inputs['sex'][0]
         age = inputs['age'][0]
@@ -57,19 +60,15 @@ def result():
         sibsp = inputs['sibsp'][0]
 
         item = np.array([pclass, sex, age, fare, sibsp]).reshape(1, -1)
+        sms_msg = pd.Series(msg)
         score = PREDICTOR.predict_proba(item)
+        X_new = cvec.transform(sms_msg)
+        sms_score = smspredictor.predict(X_new)
         results = {
-            'survival chances': score[0, 1], 'death chances': score[0, 0]}
+            'survival chances': score[0, 1], 'death chances': score[0, 0], 
+            'sms_prediction': sms_score[0]}
         return flask.jsonify(results)
 
-
-@app.route('/is_spam', methods=["GET"])
-def is_spam():
-    msg = pd.Series(flask.request.args['msg'])
-    X_new = cvec.transform(msg)
-    score = clf.predict(X_new)
-    results = {'prediction': score[0]}
-    return flask.jsonify(results)
 
 
 if __name__ == '__main__':

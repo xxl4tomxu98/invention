@@ -12,20 +12,22 @@ In Python, O(N) time complexity:
 @author: 13305
 """
 
+
 def countTriplets(arr, r):
-        count = 0
-        dict = {}
-        dictPairs = {}
+    count = 0
+    dict = {}
+    dictPairs = {}
 
-        for i in reversed(arr):
-                if i*r in dictPairs:
-                        count += dictPairs[i*r]
-                if i*r in dict:
-                        dictPairs[i] = dictPairs.get(i, 0) + dict[i*r]
+    for i in reversed(arr):
+        if i*r in dictPairs:
+                count += dictPairs[i*r]
+        if i*r in dict:
+                dictPairs[i] = dictPairs.get(i, 0) + dict[i*r]
 
-                dict[i] = dict.get(i, 0) + 1
+        dict[i] = dict.get(i, 0) + 1
 
-        return count
+    return count
+
 
 arr = [1,3,9,27,27,81,243]
 r =3

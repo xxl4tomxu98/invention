@@ -1,11 +1,14 @@
-"""Given an array of integers, sort the array in ascending order using the Bubble Sort algorithm above. Once sorted, print the following three lines:
+"""Given an array of integers, sort the array in ascending order using the
+Bubble Sort algorithm above. Once sorted, print the following three lines:
 
-Array is sorted in numSwaps swaps., where  is the number of swaps that took place.
-First Element: firstElement, where  is the first element in the sorted array.
-Last Element: lastElement, where  is the last element in the sorted array.
-Hint: To complete this challenge, you must add a variable that keeps a running tally of all swaps that occur during execution.
+Array is sorted in numSwaps swaps., where  is the number of swaps that took
+place. First Element: firstElement, where  is the first element in the sorted
+array. Last Element: lastElement, where  is the last element in the sorted
+array. Hint: To complete this challenge, you must add a variable that keeps
+a running tally of all swaps that occur during execution.
 
-For example, given a worst-case but small array to sort:  we go through the following steps:
+For example, given a worst-case but small array to sort:  we go through the
+following steps:
 
 swap    a
 0       [6,4,1]
@@ -19,7 +22,8 @@ First Element: 1
 Last Element: 6
 Function Description
 
-Complete the function countSwaps in the editor below. It should print the three lines required, then return.
+Complete the function countSwaps in the editor below. It should print the
+three lines required, then return.
 
 countSwaps has the following parameter(s):
 
@@ -35,9 +39,9 @@ Output Format
 
 You must print the following three lines of output:
 
-Array is sorted in numSwaps swaps., where  is the number of swaps that took place.
-First Element: firstElement, where  is the first element in the sorted array.
-Last Element: lastElement, where  is the last element in the sorted array."""
+Array is sorted in numSwaps swaps., where  is the number of swaps that took
+place.First Element: firstElement, where  is the first element in the sorted
+array.Last Element: lastElement, where  is the last element in the sorted array."""
 
 
 def countSwaps(a):
