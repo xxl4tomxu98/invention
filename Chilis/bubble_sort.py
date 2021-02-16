@@ -28,12 +28,11 @@ three lines required, then return.
 countSwaps has the following parameter(s):
 
 a: an array of integers .
+
 Input Format
 
 The first line contains an integer, , the size of the array .
 The second line contains  space-separated integers .
-
-Constraints
 
 Output Format
 
@@ -41,7 +40,8 @@ You must print the following three lines of output:
 
 Array is sorted in numSwaps swaps., where  is the number of swaps that took
 place.First Element: firstElement, where  is the first element in the sorted
-array.Last Element: lastElement, where  is the last element in the sorted array."""
+array.Last Element: lastElement, where  is the last element in the sorted
+array."""
 
 
 def countSwaps(a):

@@ -31,8 +31,7 @@ concept of Sliding Window. Follow the steps below to solve the problem:
 Traverse the given string and store the characters whose only lowercase or
 uppercase form are present in the input string in a Map mp. Initialize
 two arrays to keep track of the lowercase and uppercase characters obtained
-so far.
-Now, traverse the string maintaining two pointers i and st
+so far. Now, traverse the string maintaining two pointers i and st
 (initialized with 0), where st will point to the start of the current
 substring and i will point to the current character. If the current
 character is in mp, neglect all the
@@ -127,7 +126,7 @@ def smallestBalancedSubstring(s):
             # front of the current substring
             while (1):
                 if (ord(s[st]) >= 65 and ord(s[st]) <= 90
-                    and caps[ord(s[st]) - 65] > 1):
+                        and caps[ord(s[st]) - 65] > 1):
                     caps[ord(s[st]) - 65] -= 1
                     st += 1
                 elif (ord(s[st]) >= 97 and ord(s[st]) <= 122
@@ -152,6 +151,7 @@ def smallestBalancedSubstring(s):
         for i in range(start, end + 1, 1):
             ans += s[i]
         print(ans)
+
 
 # Driver Code
 if __name__ == '__main__':

@@ -1,6 +1,8 @@
 # give int array sorted return each element sqaured and sorted
 # has to be O(n), e.g. can not use .sort or sorted() which is
-# at least O(nlog(n))
+# at least O(nlog(n)) This is iterative tabulation method
+# where traverse of the original arr is like the merge method
+# in merge_sort() that is O(n) n is the total array length
 
 def sorted_squared_arr(array):
     n = len(array)

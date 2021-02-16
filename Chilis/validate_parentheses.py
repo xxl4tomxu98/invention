@@ -1,5 +1,6 @@
-'''Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid. An input string is valid if:
-Open brackets must be closed by the same type of brackets.
+'''Given a string s containing just the characters '(', ')', '{', '}',
+'[', and ']', determine if the input string is valid. An input string is
+valid if: Open brackets must be closed by the same type of brackets.
 Open brackets must be closed in the correct order.'''
 
 
@@ -22,6 +23,7 @@ def isValid(s):
                 return False
         else:
             return False
+    # at end of popping, stack should be empty
     if len(stack) != 0:
         return False
     else:
