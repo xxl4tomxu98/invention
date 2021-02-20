@@ -1,0 +1,57 @@
+def findCombinations(digits, subString):
+    dictionary = {'0': [""],
+                  '1': [""],
+                  '2': ["a", "b", "c"],
+                  '3': ["d", "e", "f"],
+                  '4': ["g", "h", "i"],
+                  '5': ["j", "k", "l"],
+                  '6': ["m", "n", "o"],
+                  '7': ["p", "q", "r", "s"],
+                  '8': ["t", "u", "v"],
+                  '9': ["w", "x", "y", "z"]}
+    result = ['']
+    intermediate = []
+    # find the index of the first occurance of subString digit
+    if subString[0] != '4':
+        index = next(digits.find(i) for i, val in dictionary.items()
+                     if subString[0] in val)
+    else:
+        index = digits.find('4')
+    # digits starts with non subString containing digit
+    if index > 0:
+        for digit in digits[:index]:
+            char_list = dictionary[digit]
+            if subString[0] == '4':
+                char_list.append(digit)
+            # eliminate "0" and "1"
+            if 0 == len(char_list):
+                continue
+            for word_str in result:
+                for suffix in char_list:
+                    intermediate.append(word_str + suffix)
+            # assign intermediate to result and reset it
+            result = intermediate
+            intermediate = []
+        result = [res + subString for res in result]
+    # digits starts with subString containing digit
+    elif index == 0:
+        result = [subString]
+    # finish rest of digits that does not contain subString
+    for digit in digits[len(result[0]):]:
+        char_list = dictionary[digit]
+        # eliminate "0" and "1"
+        if 0 == len(char_list):
+            continue
+        for word_str in result:
+            for suffix in char_list:
+                intermediate.append(word_str + suffix)
+        # assign intermediate to result and reset it
+        result = intermediate
+        intermediate = []
+    return result
+
+
+if __name__ == "__main__":
+
+    print(findCombinations("52283", "cat"))
+    print(findCombinations("542283", "4cat"))
